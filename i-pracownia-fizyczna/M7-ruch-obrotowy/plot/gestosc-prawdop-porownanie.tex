@@ -1,0 +1,102 @@
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=8.2cm, height=7cm,
+            xlabel={$10^{-3} J \, [kg \, m^2]$},
+            ylabel={Gęstość prawdopodobieństwa},
+            grid=major,
+            scaled x ticks=false,
+            x tick label style={/pgf/number format/fixed, /pgf/number format/precision=4},
+            legend style={at={(1.00,1.00)}, anchor=north east, font=\footnotesize}
+        ]
+
+        % --- Zaleznosc I ---
+        \def\muOne{2.97}
+        \def\sigmaOne{0.44}
+
+        % --- Zaleznosc II ---
+        \def\muTwo{2.25}
+        \def\sigmaTwo{0.34}
+
+        % --- Zaleznosc III ---
+        \def\muThree{2.38}
+        \def\sigmaThree{0.35}
+
+        % --- Szacowanie ---
+        \def\muFour{4.23}
+        \def\sigmaFour{0.49}
+
+        \def\medium{3}
+        \def\range{1.5}
+
+        % --- Zaleznosc I ---
+        \addplot [
+            domain=\medium - \range : \medium + \range,
+            samples=1000,
+            color=red,
+            thick,
+            smooth
+        ]
+        {1/(\sigmaOne*sqrt(2*pi)) * exp(-((x-\muOne)^2)/(2*\sigmaOne^2))};
+        \addlegendentry{Zależność I}
+
+        % --- Zaleznosc II ---
+        \addplot [
+            domain=\medium - \range : \medium + \range,
+            samples=1000,
+            color=blue,
+            thick,
+            smooth
+        ]
+        {1/(\sigmaTwo*sqrt(2*pi)) * exp(-((x-\muTwo)^2)/(2*\sigmaTwo^2))};
+        \addlegendentry{Zależność II}
+
+        % --- Zaleznosc III ---
+        \addplot [
+            domain=\medium - \range : \medium + \range,
+            samples=1000,
+            color=green,
+            thick,
+            smooth
+        ]
+        {1/(\sigmaThree*sqrt(2*pi)) * exp(-((x-\muThree)^2)/(2*\sigmaThree^2))};
+        \addlegendentry{Zależność III}
+
+        % --- Szacowanie ---
+        \addplot [
+            domain=\medium - \range : \medium + \range,
+            samples=1000,
+            color=purple,
+            thick,
+            smooth
+        ]
+        {1/(\sigmaFour*sqrt(2*pi)) * exp(-((x-\muFour)^2)/(2*\sigmaFour^2))};
+        \addlegendentry{Szacowanie}
+
+        % --- Punkty --- %
+        \pgfmathsetmacro{\peakOne}{1/(\sigmaOne*sqrt(2*pi))}
+        \draw [dashed, red!70] (axis cs:\muOne, 0) -- (axis cs:\muOne, \peakOne);
+        \addplot[mark=*, mark size=1.5pt, red] coordinates {(\muOne, \peakOne)};
+        \addplot[mark=*, mark size=1.5pt, red] coordinates {(\muOne, 0)};
+        
+        \pgfmathsetmacro{\peakTwo}{1/(\sigmaTwo*sqrt(2*pi))}
+        \draw [dashed, blue!70] (axis cs:\muTwo, 0) -- (axis cs:\muTwo, \peakTwo);
+        \addplot[mark=*, mark size=1.5pt, blue] coordinates {(\muTwo, \peakTwo)};
+        \addplot[mark=*, mark size=1.5pt, blue] coordinates {(\muTwo, 0)};
+
+        \pgfmathsetmacro{\peakThree}{1/(\sigmaThree*sqrt(2*pi))}
+        \draw [dashed, green!70] (axis cs:\muThree, 0) -- (axis cs:\muThree, \peakThree);
+        \addplot[mark=*, mark size=1.5pt, green] coordinates {(\muThree, \peakThree)};
+        \addplot[mark=*, mark size=1.5pt, green] coordinates {(\muThree, 0)};
+        
+        \pgfmathsetmacro{\peakFour}{1/(\sigmaFour*sqrt(2*pi))}
+        \draw [dashed, purple!70] (axis cs:\muFour, 0) -- (axis cs:\muFour, \peakFour);
+        \addplot[mark=*, mark size=1.5pt, purple] coordinates {(\muFour, \peakFour)};
+        \addplot[mark=*, mark size=1.5pt, purple] coordinates {(\muFour, 0)};
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Porównanie gęstości prawdopodobieństwa uzyskanych momentów bezwładności dla każdej z trzech metod wraz z zaznaczonymi wartościami oczekiwanymi.}
+    \label{img:gestosc-prawdop-porownanie}
+\end{figure}
