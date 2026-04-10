@@ -1,0 +1,97 @@
+\begin{figure}[ht]
+\centering
+    
+\begin{tikzpicture}
+\begin{axis}[
+    title={Opornik węglowy, a temperatura},
+    xlabel={Temperatura $T$ [$^{\circ}$C]},
+    ylabel={Opór $R$ [$\Omega$]},
+    legend pos=north east,
+    grid=both,
+    minor tick num=1,
+    % Tells pgfplots to skip over 'nan' entries safely
+    unbounded coords=jump, 
+    % Adjusts axis limits slightly so error bars aren't cut off
+    enlarge x limits=0.05, 
+    enlarge y limits=0.1,
+]
+
+\def\slope{-0.01649}
+\def\intercept{100.76925}
+        
+\addplot [red, thick, domain=24:90, forget plot] {\slope*x + \intercept};
+
+% Cooling Data (↘ R_c) - Empty Symbols
+\addplot [
+    only marks,
+    mark=*,
+    color=black,
+    forget plot,
+    mark options={fill=white},
+    error bars/.cd,
+        x dir=both, x fixed=1,
+        y dir=both, y fixed=1,
+] table [x=T, y=R_down] {
+    T     R_up    R_down
+    24    100     nan
+    30    100     100.5
+    32    nan     100.5
+    35    100     101
+    40    101     101
+    45    99.5    99.5
+    50    100     99.5
+    55    100     99.5
+    60    99.5    99.5
+    65    99.5    99.5
+    70    99.5    99.5
+    75    99.5    99.5
+    80    99.5    99.5
+    85    99.5    99.5
+    90    99.5    99.5
+};
+
+% Heating Data (↗ R_c) - Filled Symbols
+\addplot [
+    only marks,
+    mark=*,
+    color=black,
+    forget plot,
+    error bars/.cd,
+        x dir=both, x fixed=1,
+        y dir=both, y fixed=1,
+] table [x=T, y=R_up] {
+    T     R_up    R_down
+    24    100     nan
+    30    100     100.5
+    32    nan     100.5
+    35    100     101
+    40    101     101
+    45    99.5    99.5
+    50    100     99.5
+    55    100     99.5
+    60    99.5    99.5
+    65    99.5    99.5
+    70    99.5    99.5
+    75    99.5    99.5
+    80    99.5    99.5
+    85    99.5    99.5
+    90    99.5    99.5
+};
+
+\addlegendimage{only marks, mark=*, black, error bars/.cd, y dir=both, y explicit}
+\addlegendentry{Podgrzewanie: $T \nearrow$}
+
+\addlegendimage{only marks, mark=*, black, mark options={fill=white}, error bars/.cd, y dir=both, y explicit}
+\addlegendentry{Chłodzenie: $T \searrow$}
+
+\addlegendimage{no markers, red, thick}
+\addlegendentry{Regresja liniowa}
+
+\end{axis}
+\end{tikzpicture}
+
+\caption{
+    Zmierzone opory opornika węglowego dla różnych temperatur wraz z niepewnościami pomiarowymi oraz prostą $R=aT+b$ doprasowaną przy pomocy regresji liniowej.
+}
+\label{img:opornik-weglowy-wykres}
+\end{figure}
