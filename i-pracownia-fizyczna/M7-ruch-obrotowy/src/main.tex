@@ -23,7 +23,6 @@
 \usepackage{csquotes}
 \usepackage[labelsep=period]{caption}
 
-
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
@@ -74,7 +73,12 @@ Instytut Fizyki UJ}\\
 \begin{center}
 \textbf{Streszczenie}
 \end{center}
-Celem ćwiczenia jest sprawdzenie praw ruchu obrotowego bryły sztywnej przy pomocy Wahadła Oberbecka. Eksperyment jest podzielony na trzy części, w których badana jest zależność kwadratu czasu przejścia odważnika pomiędzy dwoma punktami pomiarowymi. W pierwszej części badana jest zależność od odległości pomiędzy punktami, w drugiej od kwadratu odległości dodatkowych odważników od osi obrotu wahadła, a w trzeciej zależność od odwrotności masy odważnika. Rozważania teoretyczne sugerują, że każda z tych zależności jest liniowa. Możliwe jest więc dopasowanie krzywej do danych pomiarowych przy pomocy regresji liniowej, co udało się. Obliczony moment bezwładności jest podobny dla każdej z trzech zależności, lecz różny od próby oszacowania jego wartości poprzez przybliżenie wahadła jako walca.
+Celem ćwiczenia jest sprawdzenie praw ruchu obrotowego bryły sztywnej przy pomocy Wahadła Oberbecka.
+Eksperyment jest podzielony na trzy części, w których badana jest zależność kwadratu czasu przejścia odważnika pomiędzy dwoma punktami pomiarowymi.
+W pierwszej części badana jest zależność od odległości pomiędzy punktami, w drugiej od kwadratu odległości dodatkowych odważników od osi obrotu wahadła, a w trzeciej zależność od odwrotności masy odważnika.
+Rozważania teoretyczne sugerują, że każda z tych zależności jest liniowa.
+Możliwe jest więc dopasowanie krzywej do danych pomiarowych przy pomocy regresji liniowej, co udało się.
+Obliczony moment bezwładności jest podobny dla każdej z trzech zależności, lecz różny od próby oszacowania jego wartości poprzez przybliżenie wahadła jako walca.
 \end{quote}
 }
 \end{quote}
@@ -85,17 +89,11 @@ Celem ćwiczenia jest sprawdzenie praw ruchu obrotowego bryły sztywnej przy pom
 \footnotetext{pawel.konopka@student.uj.edu.pl}
 
 \section{Podstawy teoretyczne}
-Kluczowym przyrządem w doświadczeniu jest wahadło Oberbecka \footnote{Wahadło jest nazwane nazwiskiem \textbf{Antona~Oberbecka} – niemieckiego fizyka żyjącego w latach 1846 – 1900 \cite{oberbeck-wiki}.}. Jest to poziomy pręt obracający się wokół pionowej osi przechodzącej przez jego środek. Do tego pręta można przyczepiać dodatkowe obciążenia w kształcie walca o różnej masie na wybranej przez siebie odległości. Dzięki temu jesteśmy w stanie w sposób kontrolowany zwiększać moment bezwładności wahadła \cite{pracownia-fizyczna-m7}. Schemat układu doświadczalnego z wahadłem Oberbecka przedstawia Rysunek~\ref{fig:schemat-m7}.
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics [width=0.95\columnwidth] {img/m7-schemat.pdf}
-  \caption{\small
-  Schemat układu doświadczalnego z wahadłem Oberbecka.
-  Źródło: I~Pracownia Fizyczna, \emph{Badanie ruchu obrotowego bryły sztywnej (M7)}, Instytut Fizyki~UJ~\cite{pracownia-fizyczna-m7}.
-  }
-  \label{fig:schemat-m7}
-\end{figure}
+Jednym z ważniejszych pojęć w opisie ruchu bryły sztywnej jest moment bezwładności. Moment bezwładności bryły względem osi $O$ to wielkość skalarna wyrażona wzorem $J_{(O)}=\sum_{i}m_{i}r_{(O)i}^{2}$, gdzie $m_i$ to masy elementów bryły, a $r_{(O)i}$ to ich odległości od osi obrotu.
+Przyrządem umożliwiającym przeprowadzenie doświadczenia jest wahadło Oberbecka \footnote{Wahadło jest nazwane nazwiskiem \textbf{Antona~Oberbecka} – niemieckiego fizyka żyjącego w latach 1846 – 1900 \cite{oberbeck-wiki}.}.
+Jest to poziomy pręt obracający się wokół pionowej osi przechodzącej przez jego środek.
+Do tego pręta można przyczepiać dodatkowe obciążenia w kształcie walca o różnej masie na wybranej przez siebie odległości.
+Dzięki temu jesteśmy w stanie w sposób kontrolowany zwiększać moment bezwładności wahadła \cite{pracownia-fizyczna-m7}.
 
 Moment bezwładności walca o masie $M_\mathrm{W}$, promieniu $R_\mathrm{W}$ i wysokości $H_\mathrm{W}$, dla prostopadłej do jego osi symetrii i przechodzącej przez środek masy $J_{\mathrm{W,CM}}$ opisuje wzór (\ref{eq:moment-bezwl-walca}).
 \begin{equation}
@@ -150,7 +148,7 @@ Sumaryczny moment bezwładności jest sumą własnego momentu bezładności oraz
 $J = \JX + \JWS$.
 Przez $\JX$ oznaczamy szukany moment bezwładności nieobciążonego wahadła.
 
-Wahadło jest wprawiane w ruch obrotowy przez moment siły tworzony przez siłę naciągu linki, która jest prostopadła i oddalona o $r$ od osi wahadła. Siła naciągu powstaje dzięki ciężarowi ciężarka o masie $m$ zawieszonego na lince. Przyspieszenie liniowe ciężarka jest stałe w czasie i opisuje je wzór (\ref{eq:przyspieszenie-liniowe}) \cite{pracownia-fizyczna-m7}.
+Przyspieszenie liniowe ciężarka jest stałe w czasie i opisuje je wzór (\ref{eq:przyspieszenie-liniowe}) \cite{pracownia-fizyczna-m7}.
 \begin{equation}
 \begin{split}
     a = \dv[2]{\phi}{t} = \frac{mgr^2}{\JX + \JWS + mr^2}
@@ -158,7 +156,8 @@ Wahadło jest wprawiane w ruch obrotowy przez moment siły tworzony przez siłę
 \end{split}
 \end{equation}
 
-Kluczowym założeniem następnych zależności teoretycznych jest to, że przy pierwszym pomiarze czasu, prędkość ciężarka jest zerowa ($v_0 = 0$). Dzięki temu wzór na przebytą wysokość $h$ jest następujący:
+Kluczowym założeniem następnych zależności teoretycznych jest to, że przy pierwszym pomiarze czasu, prędkość ciężarka jest zerowa ($v_0 = 0$).
+Dzięki temu wzór na przebytą wysokość $h$ jest następujący:
 \begin{equation}
 \begin{split}
     h(t) = \int_{t_0}^{t_0 + t} at \dd{t} = \frac{a t^2}{2} + v_0 = \frac{a t^2}{2}
@@ -180,7 +179,8 @@ W przypadku dopasowania prostej $t^2(h) = ah$, z zależności (\ref{eq:zaleznosc
 \end{equation}
 
 \subsection{Zależność II: \texorpdfstring{$t^2$}{t²} od \texorpdfstring{$\dwSq$}{dw²}}
-Dla stałego ciężarka o masie $m$, oraz stałej wysokości pomiarowej $h$, zależność kwadratu czasu $t^2$ od odległości od środka wahadła $\dwSq$ dodatkowych obciążeń jest funkcją liniową opisaną wzorem (\ref{eq:zaleznosc-ii}). $\MWS$ jest sumą mas obu dodatkowych obciążeń, a $\JwCmS$ sumą momentów bezwładności względem osi przechodzącej przez środek każdego z ciężarków~\cite{pracownia-fizyczna-m7}.
+Dla stałego ciężarka o masie $m$, oraz stałej wysokości pomiarowej $h$, zależność kwadratu czasu $t^2$ od odległości od środka wahadła $\dwSq$ dodatkowych obciążeń jest funkcją liniową opisaną wzorem (\ref{eq:zaleznosc-ii}).
+$\MWS$ jest sumą mas obu dodatkowych obciążeń, a $\JwCmS$ sumą momentów bezwładności względem osi przechodzącej przez środek każdego z ciężarków~\cite{pracownia-fizyczna-m7}.
 \begin{equation}
 \begin{split}
     t^2(\dwSq) &= \\
@@ -196,7 +196,8 @@ Równanie (\ref{eq:zaleznosc-ii}) sugeruje, że parametr kierunkowy $a$ dopasowa
 \label{eq:zaleznosc-ii-parametr-a}
 \end{equation}
 
-Z równania (\ref{eq:zaleznosc-ii}) wynika, że moment bezwładności wahadła bez obciążenia $\JX$ nie zależy od współczynnika kierunkowego prostej $a$, a jedynie od wyrazu wolnego $b$. Wartość szukanego momentu bezwładności wyrażona jest wzorem (\ref{eq:zaleznosc-ii-moment-bezwladnosci}).
+Z równania (\ref{eq:zaleznosc-ii}) wynika, że moment bezwładności wahadła bez obciążenia $\JX$ nie zależy od współczynnika kierunkowego prostej $a$, a jedynie od wyrazu wolnego $b$.
+Wartość szukanego momentu bezwładności wyrażona jest wzorem (\ref{eq:zaleznosc-ii-moment-bezwladnosci}).
 \begin{equation}
     \JX = m r^2 \left( \frac{b g}{2h} - 1 \right) - \JwCmS
 \label{eq:zaleznosc-ii-moment-bezwladnosci}
@@ -219,20 +220,23 @@ Równanie (\ref{eq:zaleznosc-iii}) sugeruje, że wyraz wolny $b$ dopasowanej pro
 \label{eq:zaleznosc-iii-parametr-b}
 \end{equation}
 
-Z równania (\ref{eq:zaleznosc-iii}) wynika, że moment bezwładności wahadła bez obciążenia $\JX$ nie zależy od wyrazu wolnego $b$, a jedynie od współczynnika kierunkowego prostej $a$. Wartość szukanego momentu bezwładności wyrażona jest wzorem (\ref{eq:zaleznosc-iii-moment-bezwladnosci}).
+Z równania (\ref{eq:zaleznosc-iii}) wynika, że moment bezwładności wahadła bez obciążenia $\JX$ nie zależy od wyrazu wolnego $b$, a jedynie od współczynnika kierunkowego prostej $a$.
+Wartość szukanego momentu bezwładności wyrażona jest wzorem (\ref{eq:zaleznosc-iii-moment-bezwladnosci}).
 \begin{equation}
     \JX = \frac{a g r^2}{2h}
 \label{eq:zaleznosc-iii-moment-bezwladnosci}
 \end{equation}
 
 \subsection{Uproszone szacowanie momentu bezwładności wahadła}
-Moment bezwładności nieobciążonego wahadła można oszacować, traktując je jako walec obracający się względem osi prostopadłej do osi symetrii obrotowej. Wahadło wykonane jest z aluminium, którego gęstość $\rho_{\mathrm{A}}$ ma wartość (\ref{eq:aluminium-gestosc}).
+Moment bezwładności nieobciążonego wahadła można oszacować, traktując je jako walec obracający się względem osi prostopadłej do osi symetrii obrotowej.
+Wahadło wykonane jest z aluminium, którego gęstość $\rho_{\mathrm{A}}$ ma wartość (\ref{eq:aluminium-gestosc}).
 \begin{equation}
     \rho_{\mathrm{A}} = 2.7~\mathrm{ \frac{g}{cm^3} } 
     \label{eq:aluminium-gestosc}
 \end{equation}
 
-Korzystając ze wzoru na objętość walca, jesteśmy w stanie wyznaczyć objętość pręta: $V_{\mathrm{P}} = \pi r_{\mathrm{P}}^2 l_{\mathrm{P}}$. Znając gęstość pręta z wartości (\ref{eq:aluminium-gestosc}), wiemy, że masa pręta $M_{\mathrm{P}}$ będzie miała wartość (\ref{eq:masa-preta}).
+Korzystając ze wzoru na objętość walca, jesteśmy w stanie wyznaczyć objętość pręta: $V_{\mathrm{P}} = \pi r_{\mathrm{P}}^2 l_{\mathrm{P}}$.
+Znając gęstość pręta z wartości (\ref{eq:aluminium-gestosc}), wiemy, że masa pręta $M_{\mathrm{P}}$ będzie miała wartość (\ref{eq:masa-preta}).
 \begin{equation}
     M_{\mathrm{P}}
     = \rho_{\mathrm{P}} V_{\mathrm{P}}
@@ -240,7 +244,8 @@ Korzystając ze wzoru na objętość walca, jesteśmy w stanie wyznaczyć objęt
     \label{eq:masa-preta}
 \end{equation}
 
-Następnie, używając wzoru~(\ref{eq:moment-bezwl-walca}) na moment bezwładności walca oraz wzoru~(\ref{eq:masa-preta}) na masę pręta, jesteśmy w stanie wyznaczyć wzór~(\ref{eq:moment-bezwladnosci-preta}) na moment bezwładności wahadła, jako funkcji długości oraz promienia pręta. Wynik oznaczymy jako $\JXn{Sz}$.
+Następnie, używając wzoru~(\ref{eq:moment-bezwl-walca}) na moment bezwładności walca oraz wzoru~(\ref{eq:masa-preta}) na masę pręta, jesteśmy w stanie wyznaczyć wzór~(\ref{eq:moment-bezwladnosci-preta}) na moment bezwładności wahadła, jako funkcji długości oraz promienia pręta.
+Wynik oznaczymy jako $\JXn{Sz}$.
 \begin{equation}
 \begin{split}
     \JXn{Sz} &= \\
@@ -254,8 +259,22 @@ Następnie, używając wzoru~(\ref{eq:moment-bezwl-walca}) na moment bezwładno�
 \end{split}
 \end{equation}
 
-\section{Układ pomiarowy}
-Zdjęcie układu pomiarowego z widocznym Wahadłem Oberbecka oraz bramkami elektronicznymi służącymi do pomiaru czasu przedstawia Rysunek~\ref{fig:zdjecie-ukladu}.
+\section{Materiały i metody}
+Zastosowanymi w ćwiczeniu przyrządami były: bramki elektroniczne pozwalające na odczyt czasu z niepewnością systematyczną rzędu $10^{-3}~\mathrm{s}$, miara zwijana o niepewności granicznej pomiarów długości $\Delta l = 1~\mathrm{mm}$ oraz waga laboratoryjna o działce legalizacyjnej $e = 0.1~\mathrm{g}$ (przyjętej jako niepewność graniczna masy $\Delta M = 0.1~\mathrm{g}$).
+Suwmiarka pozwala na znacznie dokładniejsze pomiary długości, niż miara zwijana. Jednakże ze względu na niepeprawne operowanie nią podczas eksperymentu, jako niepewność granicza pomiaru długości suwmiarką została przyjęta wartość $\Delta l$, a więc identyczna jak w wypadku miary zwijanej. 
+Niepewności standardowe długości i masy, obliczone przy pomocy wzoru (\ref{eq:konwersja-niepewnosci}) wynoszą odpowiednio $u(l) \approx 0.58~\mathrm{mm}$ i $u(M) \approx 58~\mathrm{mg}$. 
+
+Schemat układu doświadczalnego z wahadłem Oberbecka przedstawia Rysunek~\ref{fig:schemat-m7}. Wahadło jest wprawiane w ruch obrotowy przez moment siły tworzony przez siłę naciągu linki, która jest prostopadła i oddalona o $r$ od osi wahadła. Siła naciągu powstaje dzięki ciężarowi ciężarka o masie $m$ zawieszonego na lince. Zdjęcie układu pomiarowego z widocznym Wahadłem Oberbecka oraz bramkami elektronicznymi służącymi do pomiaru czasu przedstawia Rysunek~\ref{fig:zdjecie-ukladu}.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics [width=0.95\columnwidth] {img/m7-schemat.pdf}
+  \caption{\small
+  Schemat układu doświadczalnego z wahadłem Oberbecka.
+  Źródło: I~Pracownia Fizyczna, \emph{Badanie ruchu obrotowego bryły sztywnej (M7)}, Instytut Fizyki~UJ~\cite{pracownia-fizyczna-m7}.
+  }
+  \label{fig:schemat-m7}
+\end{figure}
 
 \begin{figure}
   \centering
@@ -264,49 +283,37 @@ Zdjęcie układu pomiarowego z widocznym Wahadłem Oberbecka oraz bramkami elekt
   \label{fig:zdjecie-ukladu}
 \end{figure}
 
-\subsection{Pomiary czasu}
-Do pomiarów czasu użyte zostały bramki elektroniczne. Pozwala to na odczyt z niepewnością systematyczną rzędu $10^{-3}~\mathrm{s}$.
-
-\subsection{Pomiary długości}
-Każdy z pomiarów długości w doświadczeniu został wykonany przy użyciu suwmiarki (długości poniżej 10~cm) lub miary zwijanej (pomiary od 10~cm). Oba te przyrządy posiadają tę samą systematyczną niepewność graniczną: $\Delta l = 1~\mathrm{mm}$.
-
-Niepewność standardowa pomiarów długości $u(l)$ obliczona została przy pomocy wzoru (\ref{eq:konwersja-niepewnosci}) na konwersję niepewności granicznej $\Delta l$ na standardową i ma wartość~(\ref{eq:niepewnosc-dlugosci}).
-\begin{equation}
-    u(l) = \frac{ \Delta l }{ \sqrt{3} } \approx 0.58~\mathrm{mm}
-    \label{eq:niepewnosc-dlugosci}
-\end{equation}
-
-\subsection{Pomiary masy}
-Każdy z pomiarów masy został wykonany przy użyciu wagi laboratoryjnej o  działce legalizacyjnej $e = 0.1~\mathrm{g}$. Wartość ta zostanie przyjęta jako niepewność graniczna pomiarów masy: $\Delta M = 0.1~\mathrm{g}$. Niepewność standardowa obliczona została przy pomocy wzoru (\ref{eq:konwersja-niepewnosci}) na konwersję niepewności granicznej $\Delta m$ na standardową i ma wartość (\ref{eq:niepewnosc-masa}).
-\begin{equation}
-    u(M) = \frac{ \Delta M }{ \sqrt{3} } \approx 58~\mathrm{mg}
-    \label{eq:niepewnosc-masa}
-\end{equation}
-
 \section{Przebieg pomiarów}
-\subsection{Pomiary czasu}
-Dla każdej z trzech badanych zależności wykonanych zostało 5 serii pomiarowych. Każda seria składała się z 10 pomiarów czasu.
+Dla każdej z trzech badanych zależności wykonanych zostało 5 serii pomiarowych.
+Każda seria składała się z 10 pomiarów czasu.
 
 Ze względu na bardzo wysoką precyzję bramki elektronicznej (systematyczna niepewność graniczna wynosi $10^{-3}~\mathrm{s}$) oraz stosunkowo sporą niepewność statystyczną serii pomiarów: $\ge 3.2 \cdot 10^{-2}~\mathrm{s}$, za niepewność pomiarów czasu posłużyła jedynie niepewność statystyczna.
 
-\subsection{Pomiary długości i masy}
-Wielokrotne pomiary długości przy pomocy suwmiarki oraz miary zwijanej dawały za każdym razem takie same wyniki. Tak samo było dla pomiarów masy przy użyciu wagi laboratoryjnej. Z tego względu za niepewności długości oraz masy posłużą niepewności systematyczne mające wartości (\ref{eq:niepewnosc-dlugosci}) i (\ref{eq:niepewnosc-masa}).
+Wielokrotne pomiary długości przy pomocy suwmiarki oraz miary zwijanej dawały za każdym razem takie same wyniki.
+Tak samo było dla pomiarów masy przy użyciu wagi laboratoryjnej.
+Z tego względu za niepewności długości oraz masy posłużą wspomniane w poprzednim rozdziale niepewności systematyczne.
 
 \section{Wyniki i dyskusja}
 \subsection{Regresja liniowa}
-Dla każdej z trzech badanych zależności potrzebne jest dopasowanie prostej do danych pomiarowych przy użyciu regresji liniowej. W każdym przypadku wartości szukanej funkcji liniowej odpowiadają kwadratowi czasu $t^2$. 
-
+Dla każdej z trzech badanych zależności została dopasowana prosta do danych pomiarowych przy użyciu regresji liniowej.
+W każdym przypadku wartości szukanej funkcji liniowej odpowiadają kwadratowi czasu $t^2$.
 Wzór (\ref{eq:niepewnosc-t-kwadrat}) na niepewność kwadratu czasu $u(t^2)$ uzyskany został przy pomocy zależności (\ref{eq:propagacja-niepewnosci-1-zmienna}).
 \begin{equation}
     u(t^2) = 2\bar{t}~u(t)
     \label{eq:niepewnosc-t-kwadrat}
 \end{equation}
 
-Regresja liniowa przeprowadzona została w programie \textit{OriginLab} \footnote{\url{https://www.originlab.com/}}. Ze względu na różne wartości niepewności wartości $t^2$, użyta została regresja ważona w wariancie \textit{Instrumental}. Waga $w_i$ danego punktu pomiarowego $(x_i, y_i)$ jest dana jako $w_i = \left( u(y_i) \right)^{-2}$ \cite{origin-fitting-weighting}.
+Regresja liniowa przeprowadzona została w programie \textit{OriginLab} \footnote{\url{https://www.originlab.com/}}.
+Ze względu na różne wartości niepewności wartości $t^2$, użyta została regresja ważona w wariancie \textit{Instrumental}.
+Waga $w_i$ danego punktu pomiarowego $(x_i, y_i)$ jest dana jako $w_i = \left( u(y_i) \right)^{-2}$ \cite{origin-fitting-weighting}.
 
 \subsection{Parametry stałe wahadła}
 \label{sec:parametry-stale-wahadla}
-Promień, na którym siła naciągu linki generuje moment siły, jest w rozważaniach teoretycznych niezmienny. W praktyce dokładna wartość tego promienia jest trudna do zmierzenia, gdyż linka czasem nawinięta jest bezpośrednio na metalowy walec, a czasem sama tworzy dodatkową pełną warstwę znacząco zwiększającą promień. Wartość promienia $r$ została więc oszacowana jako średnia pomiędzy tymi dwoma sytuacjami. Do niepewności granicznej pomiaru promienia wahadła dodana została połowa grubość linki, gdyż w danym pomiarze nie wiadomo jak akurat linka się ułożyła. Otrzymana została wartość (\ref{eq:wahadlo-promien}).
+Promień, na którym siła naciągu linki generuje moment siły, jest w rozważaniach teoretycznych niezmienny.
+W praktyce dokładna wartość tego promienia jest trudna do zmierzenia, gdyż linka czasem nawinięta jest bezpośrednio na metalowy walec, a czasem sama tworzy dodatkową pełną warstwę znacząco zwiększającą promień.
+Wartość promienia $r$ została więc oszacowana jako średnia pomiędzy tymi dwoma sytuacjami.
+Do niepewności granicznej pomiaru promienia wahadła dodana została połowa grubość linki, gdyż w danym pomiarze nie wiadomo jak akurat linka się ułożyła.
+Otrzymana została wartość (\ref{eq:wahadlo-promien}).
 \begin{equation}
     r = 8.00(58)~\mathrm{mm}
     \label{eq:wahadlo-promien}
@@ -321,7 +328,7 @@ Jako przyspieszenie ziemskie na terenie Krakowa przyjmujemy wartość (\ref{eq:p
 
 \subsection{Zależność I: \texorpdfstring{$t^2$}{t²} od \texorpdfstring{$h$}{h}}
 \subsubsection{Pomiary}
-Ciężarek zawieszony na linie podczas badania tej zależności ma masę o wartości (\ref{eq:zaleznosc-i-masa}).
+Ciężarek zawieszony na linie podczas badania tej zależności miał masę o wartości (\ref{eq:zaleznosc-i-masa}).
 \begin{equation}
     m = 32.20(12)~g
     \label{eq:zaleznosc-i-masa}
@@ -331,12 +338,13 @@ Wyniki pomiarów $h$ i $t$ dla zależności I oraz obliczony kwadrat czasu $t^2$
 \begin{table}[ht]
 \begin{center}
 \renewcommand*{\tablename}{Tabela}
-\caption{\small Wyniki pomiarów dla zależności I: wysokość $h$ przebyta przez ciężarek, średni zmierzony czas $t$ z niepewnością oraz obliczony kwadrat czasu $\bar{t}^2$ wraz z niepewnością.\vspace{0.15cm}
+\caption{\small Wyniki pomiarów: wysokość $h$ przebyta przez ciężarek, średni zmierzony czas $t$ z niepewnością oraz obliczony kwadrat czasu $\bar{t}^2$ wraz z niepewnością.\vspace{0.15cm}
     \label{tab:zaleznosc-i}}
     {\small
     \begin{tabular}{c c r r}
     \hline \vspace{-0.35cm} \\
-      Lp. & $h~[\mathrm{cm}]$ & $\bar{t}~[\mathrm{s}]$ & $\bar{t}^2~[\mathrm{s^2}]$ \\ 
+      Lp.
+      & $h~[\mathrm{cm}]$ & $\bar{t}~[\mathrm{s}]$ & $\bar{t}^2~[\mathrm{s^2}]$ \\ 
       \hline \vspace{-0.2cm} \\
      1 & 17.3 & 6.2(1) & 38(2) \\
      2 & 31.7 & 9.0(2) & 81(2) \\
@@ -358,9 +366,9 @@ W wyniku regresji liniowej uzyskane zostały parametry prostej o wartościach~(\
 \end{split}
 \end{equation}
 
-Miara dopasowania $R^2$ ma wartość: $R^2 = 0.99937$, co z ogromnym zapasem spełnia warunek dobrego dopasowania krzywej w regresji $R^2 \geq 0.99$ \cite{epa-8000d}.
-
-Na szczególną uwagę zasługuje fakt, że oczekiwana w rozważaniach teoretycznych zerowa wartość wyrazu wolnego prostej (wzór \ref{eq:zaleznosc-i}) nie mieści się w przedziale ufności $3 u(b)$, co pokazuje wzór (\ref{eq:regresja-i-przedzial-ufnosci-b}). Może to sugerować rozbieżność, między rozważaniami teoretycznymi, a realiami układu doświadczalnego.
+Miara dopasowania $R^2$ ma wartość: $R^2 = 0.99937$, co spełnia warunek dopasowania krzywej w regresji $R^2 \geq 0.99$ \cite{epa-8000d}.
+Na szczególną uwagę zasługuje fakt, że oczekiwana w rozważaniach teoretycznych zerowa wartość wyrazu wolnego prostej (wzór \ref{eq:zaleznosc-i}) nie mieści się w przedziale ufności $3 u(b)$, co pokazuje wzór (\ref{eq:regresja-i-przedzial-ufnosci-b}).
+Może to sugerować rozbieżność, między rozważaniami teoretycznymi, a realiami układu doświadczalnego.
 \begin{equation}
 \begin{split}
     0 &\notin \left( -17.2, -7.5 \right)~\mathrm{s^2} \\
@@ -369,17 +377,20 @@ Na szczególną uwagę zasługuje fakt, że oczekiwana w rozważaniach teoretycz
 \end{split}
 \end{equation}
 
-Dane z Tabeli \ref{tab:zaleznosc-i} wraz z dopasowaną krzywą o parametrach (\ref{eq:regresja-i-parametry}) zaprezentowane zostały na wykresie: Rysunek~\ref{img:regresja-i-wykres}.
+Dane z Tabeli \ref{tab:zaleznosc-i} wraz z dopasowaną krzywą o parametrach (\ref{eq:regresja-i-parametry}) zostały zaprezentowane na Rysunku~\ref{img:regresja-i-wykres}.
 \input{plot/zaleznosc-i-regresja-wykres}
 
 \subsubsection{Obliczenie momentu bezwładności}
-Przy użyciu wzoru (\ref{eq:zaleznosc-i-moment-bezwladnosci}) jesteśmy w stanie obliczyć moment bezwładności nieobciążonego wahadła $\JX$ zależnością I: wynik (\ref{eq:zaleznosc-i-wynik}). Używamy do tego zmierzonych wcześniej wartości: (\ref{eq:wahadlo-promien}), (\ref{eq:przyspieszenie-ziemskie}), (\ref{eq:zaleznosc-i-masa}) oraz (\ref{eq:regresja-i-parametry}). Obliczoną wartość (\ref{eq:zaleznosc-i-wynik}) oznaczamy jako $\JXn{I}$.
+Przy użyciu wzoru (\ref{eq:zaleznosc-i-moment-bezwladnosci}) został wyliczony moment bezwładności nieobciążonego wahadła $\JX$ z zależności I. Wynik przedstawia równanie (\ref{eq:zaleznosc-i-wynik}).
+Wykorzystano do tego zmierzone wcześniej wartości: (\ref{eq:wahadlo-promien}), (\ref{eq:przyspieszenie-ziemskie}), (\ref{eq:zaleznosc-i-masa}) oraz (\ref{eq:regresja-i-parametry}). Obliczoną wartość (\ref{eq:zaleznosc-i-wynik}) oznaczamy jako $\JXn{I}$.
 \begin{equation}
     \JXn{I} = 2.97(44) \cdot 10^{-3}~\mathrm{kg~m^2}
     \label{eq:zaleznosc-i-wynik}
 \end{equation}
 
-Niepewność wyniku (\ref{eq:zaleznosc-i-wynik}) $\JXn{I}$ policzona została przy użyciu wzoru (\ref{eq:propagacja-niepewnosci-wiele-zmiennych}). Informacja o tym, w jakim stopniu dane składniki wpływają na niepewność wyniku znajduje się w Tabeli~\ref{tab:zaleznosc-i-niepewnosci}.
+Niepewność wyniku (\ref{eq:zaleznosc-i-wynik}) $\JXn{I}$ policzona została przy użyciu wzoru (\ref{eq:propagacja-niepewnosci-wiele-zmiennych}).
+Informacja o tym, w jakim stopniu dane składniki wpływają na niepewność wyniku znajduje się w Tabeli~\ref{tab:zaleznosc-i-niepewnosci}.
+
 \begin{table}[ht]
 \begin{center}
 \renewcommand*{\tablename}{Tabela}
@@ -388,7 +399,8 @@ Niepewność wyniku (\ref{eq:zaleznosc-i-wynik}) $\JXn{I}$ policzona została pr
     {\small
     \begin{tabular}{c c l}
     \hline \vspace{-0.35cm} \\
-      Lp. & $x$
+      Lp.
+      & $x$
       & $\left( \pdv{\JX}{x} u(x) \right)^2 [kg^2~m^4]$ \\ 
       \hline \vspace{-0.2cm} \\
      1 & $r$ & $1.8 \cdot 10^{-7}$ \\
@@ -402,19 +414,19 @@ Niepewność wyniku (\ref{eq:zaleznosc-i-wynik}) $\JXn{I}$ policzona została pr
 
 \subsection{Zależność II: \texorpdfstring{$t^2$}{t²} od \texorpdfstring{$\dwSq$}{dw²}}
 \subsubsection{Pomiary}
-Ciężarek zawieszony na linie podczas badania tej zależności ma masę o wartości (\ref{eq:zaleznosc-ii-masa}).
+Ciężarek zawieszony na linie podczas badania tej zależności miał masę o wartości (\ref{eq:zaleznosc-ii-masa}).
 \begin{equation}
     m = 98.50(12)~\mathrm{g}
     \label{eq:zaleznosc-ii-masa}
 \end{equation}
 
-Badana wysokość $h$ ma w tym scenariuszu stałą wartość (\ref{eq:zaleznosc-ii-wysokosc}).
+Badana wysokość $h$ miała w tym scenariuszu stałą wartość (\ref{eq:zaleznosc-ii-wysokosc}).
 \begin{equation}
     h = 19.800(58)~\mathrm{cm}
     \label{eq:zaleznosc-ii-wysokosc}
 \end{equation}
 
-Krążki użyte jako dodatkowe obciążenia przy padaniu tej zależności mają masy $M_{\mathrm{W,1}}$ i $M_{\mathrm{W,2}}$, promień $R_{\mathrm{W}}$ oraz wysokość $H_{\mathrm{W}}$ o wartościach (\ref{eq:zaleznosc-ii-parametry-walcow}).
+Krążki użyte jako dodatkowe obciążenia przy padaniu tej zależności miały masy $M_{\mathrm{W,1}}$ i $M_{\mathrm{W,2}}$, promień $R_{\mathrm{W}}$ oraz wysokość $H_{\mathrm{W}}$ o wartościach (\ref{eq:zaleznosc-ii-parametry-walcow}).
 \begin{equation}
 \begin{split}
     M_{\mathrm{W,1}} &= 241.80(6)~\mathrm{g} \\
@@ -425,16 +437,18 @@ Krążki użyte jako dodatkowe obciążenia przy padaniu tej zależności mają 
 \end{split}
 \end{equation}
 
-Wyniki pomiarów $d_{\mathrm{W}}$ i $t$ dla zależności II, obliczony kwadrat odległości ułożenia ciężarka $\dwSq$ oraz kwadrat czasu $t^2$ wraz z niepewnościami przedstawione są w Tabeli \ref{tab:zaleznosc-ii}.
+Wyniki pomiarów $d_{\mathrm{W}}$ i $t$, obliczony kwadrat odległości ułożenia ciężarka $\dwSq$ oraz kwadrat czasu $t^2$ wraz z niepewnościami przedstawione są w Tabeli \ref{tab:zaleznosc-ii}.
 \begin{table}[ht]
 \begin{center}
 \renewcommand*{\tablename}{Tabela}
-\caption{\small Wyniki pomiarów $d_{\mathrm{W}}$ i $t$ dla zależności II, obliczony kwadrat odległości ułożenia ciężarka $\dwSq$ oraz kwadrat czasu $\bar{t}^2$ wraz z niepewnościami. Każdy z pomiarów odległości $d_{\mathrm{W}}$ obarczony jest niepewnością $u(d_{\mathrm{W}}) = 0.29~\mathrm{mm}$.\vspace{0.15cm}
+\caption{\small Wyniki pomiarów $d_{\mathrm{W}}$ i $t$, obliczony kwadrat odległości ułożenia ciężarka $\dwSq$ oraz kwadrat czasu $\bar{t}^2$ wraz z niepewnościami.
+Każdy z pomiarów odległości $d_{\mathrm{W}}$ obarczony jest niepewnością $u(d_{\mathrm{W}}) = 0.29~\mathrm{mm}$.\vspace{0.15cm}
     \label{tab:zaleznosc-ii}}
     {\small
     \begin{tabular}{c c r r r}
     \hline \vspace{-0.35cm} \\
-      Lp. & $d_{\mathrm{W}}~[\mathrm{dm}]$ & $\dwSq~[\mathrm{dm^2}]$
+      Lp.
+      & $d_{\mathrm{W}}~[\mathrm{dm}]$ & $\dwSq~[\mathrm{dm^2}]$
       & $\bar{t}~[\mathrm{s}]$ & $\bar{t}^2~[\mathrm{s^2}]$ \\ 
       \hline \vspace{-0.2cm} \\
       1 & 0.32 & 0.099(2) & 4.06(7) & 16.5(6) \\
@@ -442,6 +456,7 @@ Wyniki pomiarów $d_{\mathrm{W}}$ i $t$ dla zależności II, obliczony kwadrat o
       3 & 1.71 & 2.92(1) & 8.32(6) & 69(2) \\
       4 & 2.41 & 5.81(2) & 11.3(2) & 126(3) \\
       5 & 2.82 & 7.95(2) & 12.7(2) & 162(4) \\
+   
     \hline
     \end{tabular}}
     \end{center}
@@ -457,9 +472,8 @@ W wyniku regresji liniowej uzyskane zostały parametry prostej o wartościach~(\
 \end{split}
 \end{equation}
 
-Miara dopasowania $R^2$ ma wartość: $R^2 = 0.99953$, co z ogromnym zapasem spełnia warunek dobrego dopasowania krzywej w regresji $R^2 \geq 0.99$ \cite{epa-8000d}.
-
-Dane z Tabeli \ref{tab:zaleznosc-ii} wraz z dopasowaną krzywą o parametrach (\ref{eq:regresja-ii-parametry}) zaprezentowane zostały na wykresie: Rysunek~\ref{img:regresja-ii-wykres}.
+Miara dopasowania $R^2$ ma wartość: $R^2 = 0.99953$, co spełnia warunek dobrego dopasowania krzywej w regresji $R^2 \geq 0.99$ \cite{epa-8000d}.
+Dane z Tabeli \ref{tab:zaleznosc-ii} wraz z dopasowaną krzywą o parametrach (\ref{eq:regresja-ii-parametry}) zostały zaprezentowane na Rysunku~\ref{img:regresja-ii-wykres}.
 \input{plot/zaleznosc-ii-regresja-wykres}
 
 Wyrażenie (\ref{eq:zaleznosc-ii-parametr-a}) pozwala nam teraz skontrolować zgodność uzyskanej prostej z wartością oczekiwaną w rozważaniach teoretycznych $a_{\mathrm{T}}$, której wartość przedstawia równość (\ref{eq:regresja-ii-a-teoretyczne}).
@@ -470,7 +484,8 @@ Wyrażenie (\ref{eq:zaleznosc-ii-parametr-a}) pozwala nam teraz skontrolować zg
 \end{split}
 \end{equation}
 
-Wartość współczynnika kierunkowego $a$ uzyskanego w regresji liniowej mieści się jedynie w przedziale ufności $3u(a_{\mathrm{T}})$, co obrazuje zależność (\ref{eq:regresja-ii-przedzial-ufnosci-a}). Fakt, że potrzebny jest przeciał ufności $3u(a_{\mathrm{T}})$ może być kolejną sugestią istnienia rozbieżności między założeniami teoretycznymi, a rzeczywistością doświadczalną.
+Wartość współczynnika kierunkowego $a$ uzyskanego w regresji liniowej mieści się jedynie w przedziale ufności $3u(a_{\mathrm{T}})$, co obrazuje zależność (\ref{eq:regresja-ii-przedzial-ufnosci-a}).
+Fakt, że potrzebny jest przeciał ufności $3u(a_{\mathrm{T}})$ może być kolejną sugestią istnienia rozbieżności między założeniami teoretycznymi, a rzeczywistością.
 \begin{equation}
 \begin{split}
     a &= 1.880(24) \cdot 10^3~\mathrm{ s^2 m^{-2} } \\
@@ -484,13 +499,9 @@ Wartość współczynnika kierunkowego $a$ uzyskanego w regresji liniowej mieśc
 \end{equation}
 
 \subsubsection{Obliczenie momentu bezwładności}
-Przy użyciu wzoru (\ref{eq:zaleznosc-ii-moment-bezwladnosci}) jesteśmy w stanie obliczyć wartości momentu bezwładności wahadła bez obciążenia $\JX$ zależnością II. Używamy do tego zmierzonych wcześniej wartości: (\ref{eq:wahadlo-promien}),
-(\ref{eq:przyspieszenie-ziemskie}),
-(\ref{eq:zaleznosc-ii-masa})
-(\ref{eq:zaleznosc-ii-wysokosc})
-(\ref{eq:zaleznosc-ii-parametry-walcow}) oraz
-(\ref{eq:regresja-ii-parametry}).
-Obliczoną wartość (\ref{eq:zaleznosc-ii-wynik}) oznaczamy jako $\JXn{II}$. Niepewność wyniku policzona została przy użyciu wzoru (\ref{eq:propagacja-niepewnosci-wiele-zmiennych}).
+Przy użyciu wzoru (\ref{eq:zaleznosc-ii-moment-bezwladnosci}) został wyliczony moment bezwładności wahadła bez obciążenia $\JX$ z zależności II.
+Wykorzystano do tego zmierzone wcześniej wartości: (\ref{eq:wahadlo-promien}), (\ref{eq:przyspieszenie-ziemskie}), (\ref{eq:zaleznosc-ii-masa}) (\ref{eq:zaleznosc-ii-wysokosc}) (\ref{eq:zaleznosc-ii-parametry-walcow}) oraz (\ref{eq:regresja-ii-parametry}). Wynik przedstawia równanie (\ref{eq:zaleznosc-ii-wynik}). Obliczoną wartość oznaczamy jako $\JXn{II}$.
+Niepewność wyniku policzona została przy użyciu wzoru (\ref{eq:propagacja-niepewnosci-wiele-zmiennych}).
 \begin{equation}
     \JXn{II} = 2.25(34) \cdot 10^{-3}~\mathrm{kg~m^2}
     \label{eq:zaleznosc-ii-wynik}
@@ -498,22 +509,24 @@ Obliczoną wartość (\ref{eq:zaleznosc-ii-wynik}) oznaczamy jako $\JXn{II}$. Ni
 
 \subsection{Zależność III: \texorpdfstring{$t^2$}{t²} od \texorpdfstring{$m^{-1}$}{1/m}}
 \subsubsection{Pomiary}
-Badana wysokość $h$ ma w tym scenariuszu stałą wartość (\ref{eq:zaleznosc-iii-wysokosc}).
+Badana wysokość $h$ miała stałą wartość (\ref{eq:zaleznosc-iii-wysokosc}).
 \begin{equation}
     h = 19.800(58)~\mathrm{cm}
     \label{eq:zaleznosc-iii-wysokosc}
 \end{equation}
 
-Wyniki pomiarów masy ciężarków $m$ i czasu $\bar{t}$ dla zależności III, obliczona odwrotność masy $m^{-1}$ oraz kwadrat czasu $\bar{t}^2$ wraz z niepewnościami przedstawione są w Tabeli \ref{tab:zaleznosc-iii}.
+Wyniki pomiarów masy ciężarków $m$ i czasu $\bar{t}$, obliczona odwrotność masy $m^{-1}$ oraz kwadrat czasu $\bar{t}^2$ wraz z niepewnościami przedstawione są w Tabeli \ref{tab:zaleznosc-iii}.
 \begin{table}[ht]
 \begin{center}
 \renewcommand*{\tablename}{Tabela}
-\caption{\small Wyniki pomiarów masy ciężarków $m$ i czasu $\bar{t}$ dla zależności III, obliczona odwrotność masy $m^{-1}$ oraz kwadrat czasu $\bar{t}^2$ wraz z niepewnościami. Każdy z pomiarów masy $m$ obarczony jest niepewnością $u(m) = 58~\mathrm{mg}$.\vspace{0.15cm}
+\caption{\small Wyniki pomiarów masy ciężarków $m$ i czasu $\bar{t}$, obliczona odwrotność masy $m^{-1}$ oraz kwadrat czasu $\bar{t}^2$ wraz z niepewnościami.
+Każdy z pomiarów masy $m$ obarczony jest niepewnością $u(m) = 58~\mathrm{mg}$.\vspace{0.15cm}
     \label{tab:zaleznosc-iii}}
     {\small
     \begin{tabular}{c l r r r}
     \hline \vspace{-0.35cm} \\
-      Lp. & $m~[\mathrm{g}]$ & $m^{-1}~[\mathrm{kg^{-1}}]$
+      Lp.
+      & $m~[\mathrm{g}]$ & $m^{-1}~[\mathrm{kg^{-1}}]$
       & $\bar{t}~[\mathrm{s}]$ & $\bar{t}^2~[\mathrm{s^2}]$ \\
       \hline \vspace{-0.2cm} \\
       1 & 197 & 5.076(3) & 2.80(3) & 7.9(2) \\
@@ -521,7 +534,8 @@ Wyniki pomiarów masy ciężarków $m$ i czasu $\bar{t}$ dla zależności III, o
       3 & 98.5 & 10.15(2) & 3.81(6) & 14.5(5) \\
       4 & 60.3 & 16.58(3) & 5.02(8) & 25.2(8) \\
       5 & 12.1 & 82.6(8) & 11.2(2) & 126(3) \\
-    \hline
+    
+\hline
     \end{tabular}}
     \end{center}
 \end{table}
@@ -536,12 +550,12 @@ W wyniku regresji liniowej uzyskane zostały parametry prostej o wartościach~(\
 \end{split}
 \end{equation}
 
-Miara dopasowania $R^2$ ma wartość: $R^2 = 0.99923$, co z ogromnym zapasem spełnia warunek dobrego dopasowania krzywej w regresji $R^2 \geq 0.99$ \cite{epa-8000d}.
-
-Dane z Tabeli \ref{tab:zaleznosc-iii} wraz z dopasowaną krzywą o parametrach (\ref{eq:regresja-iii-parametry}) zaprezentowane zostały na wykresie: Rysunek~\ref{img:regresja-iii-wykres}.
+Miara dopasowania $R^2$ ma wartość: $R^2 = 0.99923$, co spełnia warunek dobrego dopasowania krzywej w regresji $R^2 \geq 0.99$ \cite{epa-8000d}.
+Dane z Tabeli \ref{tab:zaleznosc-iii} wraz z dopasowaną krzywą o parametrach (\ref{eq:regresja-iii-parametry}) zostały zaprezentowane na Rysunku~\ref{img:regresja-iii-wykres}.
 \input{plot/zaleznosc-iii-regresja-wykres}
 
-Wyrażenie (\ref{eq:zaleznosc-iii-parametr-b}) pozwala nam teraz skontrolować zgodność uzyskanej prostej z wartością oczekiwaną w rozważaniach teoretycznych. $b_{\mathrm{T}}$ to teoretyczna wartość wyrazu wolnego prostej, której wartość przedstawia równość (\ref{eq:regresja-iii-b-teoretyczne}).
+Wyrażenie (\ref{eq:zaleznosc-iii-parametr-b}) pozwala nam teraz skontrolować zgodność uzyskanej prostej z wartością oczekiwaną w rozważaniach teoretycznych.
+$b_{\mathrm{T}}$ to teoretyczna wartość wyrazu wolnego prostej, której wartość przedstawia równość (\ref{eq:regresja-iii-b-teoretyczne}).
 \begin{equation}
 \begin{split}
     b_{\mathrm{T}} = \frac{2h}{g} = 0.04036(11)~\mathrm{s^2}
@@ -563,14 +577,16 @@ Wartość teoretycznego wyrazu wolnego prostej mieści się w przedziale ufnośc
 \end{equation}
 
 \subsubsection{Obliczenie momentu bezwładności}
-Przy użyciu wzoru (\ref{eq:zaleznosc-iii-moment-bezwladnosci}) jesteśmy w stanie obliczyć wartości momentu bezwładności wahadła bez obciążenia $\JX$ zależnością II: wynik (\ref{eq:zaleznosc-iii-wynik}). Używamy do tego zmierzonych wcześniej wartości: (\ref{eq:wahadlo-promien}), (\ref{eq:przyspieszenie-ziemskie}), (\ref{eq:zaleznosc-iii-wysokosc}) oraz (\ref{eq:regresja-iii-parametry}). Obliczoną wartość (\ref{eq:zaleznosc-iii-wynik}) oznaczamy jako $\JXn{III}$.
+Przy użyciu wzoru (\ref{eq:zaleznosc-iii-moment-bezwladnosci}) został wyliczony moment bezwładności wahadła bez obciążenia $\JX$ z zależności III. Wynik przedstawia równanie (\ref{eq:zaleznosc-iii-wynik}).
+Wykorzystano do tego zmierzone wcześniej wartości: (\ref{eq:wahadlo-promien}), (\ref{eq:przyspieszenie-ziemskie}), (\ref{eq:zaleznosc-iii-wysokosc}) oraz (\ref{eq:regresja-iii-parametry}). Obliczoną wartość oznaczamy jako $\JXn{III}$.
 \begin{equation}
     \JXn{III} = 2.38(35) \cdot 10^{-3}~\mathrm{kg~m^2}
     \label{eq:zaleznosc-iii-wynik}
 \end{equation}
 
 \subsection{Uproszone szacowanie momentu bezwładności wahadła}
-Aby oszacować moment bezwładności nieobciążonego wahadła poprzez potraktowanie go jako walec obracający się względem osi prostopadłej do osi symetrii obrotowej, potrzebne są dodatkowe pomiary. Długość pręta przyczepionego do wahadła oznaczymy przez $l_{\mathrm{P}}$, natomiast jego promień przez $r_{\mathrm{P}}$. Wielkości te mają wartości~(\ref{eq:parametry-preta}).
+Aby oszacować moment bezwładności nieobciążonego wahadła poprzez potraktowanie go jako walec obracający się względem osi prostopadłej do osi symetrii obrotowej, potrzebne są dodatkowe pomiary.
+Długość pręta przyczepionego do wahadła oznaczymy przez $l_{\mathrm{P}}$, natomiast jego promień przez $r_{\mathrm{P}}$. Wielkości te mają wartości~(\ref{eq:parametry-preta}).
 \begin{equation}
 \begin{split}
     l_{\mathrm{P}} &= 62.100(58)~\mathrm{cm} \\
@@ -579,26 +595,34 @@ Aby oszacować moment bezwładności nieobciążonego wahadła poprzez potraktow
 \end{split}
 \end{equation}
 
-Wykorzystując wzór~(\ref{eq:moment-bezwladnosci-preta}), zmierzone parametry~(\ref{eq:parametry-preta}) pręta oraz wartość~(\ref{eq:aluminium-gestosc}) gęstości aluminium, jesteśmy w stanie oszacować moment bezwładności wahadła $\JXn{Sz}$ traktując je jako walec. Wartość~(\ref{eq:wartosc-moment-bezwladnosci-preta}) przedstawia uzyskany rezultat.
+Wykorzystując wzór~(\ref{eq:moment-bezwladnosci-preta}), zmierzone parametry~(\ref{eq:parametry-preta}) pręta oraz wartość~(\ref{eq:aluminium-gestosc}) gęstości aluminium, jesteśmy w stanie oszacować moment bezwładności wahadła $\JXn{Sz}$ traktując je jako walec.
+Wartość~(\ref{eq:wartosc-moment-bezwladnosci-preta}) przedstawia uzyskany rezultat.
 \begin{equation}
     \JXn{Sz} = 4.23(49) \cdot 10^{-3}~\mathrm{kg~m^2}
     \label{eq:wartosc-moment-bezwladnosci-preta}
 \end{equation}
 
 \section{Podsumowanie i wnioski}
-\subsection{Liniowość mierzonych danych}
-Sporym sukcesem doświadczenia jest fakt, że współczynnik korelacji $R^2$ dla każdej z 3 wykonanych regresji liniowych wyniósł aż $R^2 \ge 0.999$, co z ogromnym zapasem spełnia warunek dobrego dopasowania krzywej w regresji $R^2 \geq 0.99$ \cite{epa-8000d}. Stwierdzona liniowość badanych wielkości potwierdza słuszność praw ruchu obrotowego.
+\subsection{Ocena dopasowania modelu}
+Współczynnik korelacji $R^2$ dla każdej z 3 wykonanych regresji liniowych wyniósł $R^2 \ge 0.999$, co spełnia warunek dobrego dopasowania krzywej w regresji $R^2 \geq 0.99$ \cite{epa-8000d}.
+Stwierdzona liniowość badanych wielkości potwierdza słuszność praw ruchu obrotowego.
 
 \subsection{Oczekiwane teoretyczne współczynniki prostych}
-Zastanawiającym jest fakt, że w Zależności I oczekiwany w założeniach teoretycznych zerowy wyraz wolny funkcji liniowej $b$ nie był zawarty w przedziale ufności $3u(b)$ uzyskanych parametrów dopasowanej prostej. Podobny problem wystąpił w Zależności II, jednak tam uzyskana wartość współczynnika kierunkowego prostej $a$ mieściła się w przedziale ufności $3u(a_{\mathrm{T}})$ oczekiwanej wartości teoretycznej.
-
-Jako przyczynę takiego stanu rzeczy wskazałbym fakt, że układ nie spełnia wszystkich kryteriów zakładanych przez rozważania teoretyczne. Dla przykładu bloczek zmieniający kierunek działania siły naciągu linki sam posiada niezerową bezwładność, co nie zostało ujęte w założeniach teoretycznych.
-
-Dodatkowym założeniem, które prawdopodobnie nie zostało spełnione, jest zerowa prędkość ciężarka w momencie rozpoczęcia pomiaru czasu. Dość spora rozbieżność pomiarów czasu w ramach serii pomiarowych (rzędu $1$~s) sugeruje, że warunek ten nie był spełniony dla sporej części pomiarów. Taki wniosek powodowałby, że wartość średnia pomiarów czasu w ramach serii nie jest w rzeczywistości najbardziej prawdopodobną \enquote{prawdziwną} wartością, a jest on niej większa.
+Zastanawiającym jest fakt, że w Zależności I oczekiwany w założeniach teoretycznych zerowy wyraz wolny funkcji liniowej $b$ nie był zawarty w przedziale ufności $3u(b)$ uzyskanych parametrów dopasowanej prostej.
+Podobny problem wystąpił w Zależności II, jednak tam uzyskana wartość współczynnika kierunkowego prostej $a$ mieściła się w przedziale ufności $3u(a_{\mathrm{T}})$ oczekiwanej wartości teoretycznej.
+Jako przyczynę takiego stanu rzeczy wskazałbym fakt, że układ nie spełnia wszystkich kryteriów zakładanych przez rozważania teoretyczne.
+Dla przykładu bloczek zmieniający kierunek działania siły naciągu linki sam posiada niezerową bezwładność, co nie zostało ujęte w założeniach teoretycznych.
+Dodatkowym założeniem, które prawdopodobnie nie zostało spełnione, jest zerowa prędkość ciężarka w momencie rozpoczęcia pomiaru czasu.
+Dość spora rozbieżność pomiarów czasu w ramach serii pomiarowych (rzędu $1$~s) sugeruje, że warunek ten nie był spełniony dla sporej części pomiarów.
+Taki wniosek powodowałby, że wartość średnia pomiarów czasu w ramach serii nie jest w rzeczywistości najbardziej prawdopodobną \enquote{prawdziwną} wartością, a jest on niej większa.
 
 \subsection{Źródło niepewności otrzymanego wyniku}
-Głównym źródłem niepewności otrzymanych wyników nie okazało się dopasowanie prostej przy pomocy regresji liniowej, a niepewność pomiaru promienia, na którym siła naciągu linki działa jako moment siły przyspieszający cały układ. Zostało to dokładniej opisane w Podrozdziale \ref{sec:parametry-stale-wahadla}.
-W celu zmniejszenia niepewności uzyskanych wyników dobrym pomysłem mogłoby się okazać zmodyfikowanie wahadła tak, aby promień ten miał bardziej przewidywalną i większą wartość.
+Głównym źródłem niepewności otrzymanych wyników nie okazało się dopasowanie prostej przy pomocy regresji liniowej, a niepewność pomiaru promienia, na którym siła naciągu linki działa jako moment siły przyspieszający cały układ.
+Zostało to dokładniej opisane w Podrozdziale \ref{sec:parametry-stale-wahadla}.
+Dodatkowym źródłem niepewności była błędna obsługa suwmiarki, co uwidacznia przyjęty błąd pomiarowy.
+
+W celu zmniejszenia niepewności uzyskanych wyników dobrym pomysłem mogłoby się okazać powtórzenie pomiarów suwmiarką, tak aby wyniki były obarczone najmniejszą niepewnością, na jaki pozwala przyrząd.
+Innym pomysłem na zmniejszenie niepewności mogłoby być zmodyfikowanie wahadła tak, aby mierzony promień miał bardziej przewidywalną i większą wartość.
 
 \subsection{Porównanie otrzymanych wyników}
 Uzyskane momenty bezwładności dla każdej z trzech zależności oraz wartość oszacowana zostały zebrane w Tabeli~\ref{tab:porownanie-wynikow}.
@@ -623,13 +647,16 @@ Zebrane uzyskane momenty bezwładności dla każdej z trzech zależności oraz w
     \end{center}
 \end{table}
 
-W celu lepszej wizualizacji narysowany został wykres: Rysunek~\ref{img:gestosc-prawdop-porownanie} przedstawiający funkcje gęstości prawdopodobieństwa dla rozkładów wszystkich uzyskanych wartości  momentów bezwładności. Zaznaczone zostały także wartości oczekiwane.
+W celu lepszej wizualizacji narysowany został Rysunek~\ref{img:gestosc-prawdop-porownanie} przedstawiający funkcje gęstości prawdopodobieństwa dla rozkładów wszystkich uzyskanych wartości momentów bezwładności.
+Zaznaczone zostały także wartości oczekiwane.
 \input{plot/gestosc-prawdop-porownanie}
 
 Z wykresu: Rysunek~\ref{img:gestosc-prawdop-porownanie} można zauważyć, że Zależność II oraz III dały niemalże identyczne wyniki.
 Zależność I dostarczyła nieco większej wartości momentu bezwładności, jednakże wartości oczekiwane dla dwóch kolejnych zależności $(\bar{\JXn{II}}, \bar{\JXn{III}})$ mieszczą się w przedziale ufności $2u(\JXn{I})$.
-
-Na uwagę zasługuje znacznie większy rezultat momentu bezwładności oszacowanego poprzez podobieństwo wahadła do walca. Co ciekawe, rezultat jest większy od pozostałych wartości, a nie mniejszy, jak można by oczekiwać. Wahadło z układu to nie jest jedynie poprzeczny aluminiowy pręt, który został przybliżony walcem, lecz także pusty w środku pręt podłużny. Pomimo że jego masa znajduje się blisko środka ciężkości, należałoby się spodziewać, że w sposób zauważalny zwiększy bezwładność całości.
+Na uwagę zasługuje znacznie większy rezultat momentu bezwładności oszacowanego poprzez podobieństwo wahadła do walca.
+Co ciekawe, rezultat jest większy od pozostałych wartości, a nie mniejszy, jak można by oczekiwać.
+Wahadło z układu to nie jest jedynie poprzeczny aluminiowy pręt, który został przybliżony walcem, lecz także pusty w środku pręt podłużny.
+Pomimo że jego masa znajduje się blisko środka ciężkości, należałoby się spodziewać, że w sposób zauważalny zwiększy bezwładność całości.
 
 \section{Materiały dodatkowe}
 \subsection{Konwersja niepewności granicznej na niepewność standardową}
