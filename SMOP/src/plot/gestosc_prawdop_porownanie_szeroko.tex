@@ -1,0 +1,62 @@
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=8.2cm, height=7cm,
+            xlabel={$10^{-3} J \, [kg \, m^2]$},
+            ylabel={Gęstość prawdopodobieństwa},
+            grid=major,
+            scaled x ticks=false,
+            x tick label style={/pgf/number format/fixed, /pgf/number format/precision=4},
+            legend style={at={(0.02,0.98)}, anchor=north west}
+        ]
+
+        % --- Metoda I ---
+        \def\muOne{9.59}
+        \def\sigmaOne{0.25}
+
+        % --- Metoda II ---
+        \def\muTwo{8.3}
+        \def\sigmaTwo{4.2}
+
+        \def\medium{(1 * \muOne + 1 * \muTwo) / 2}
+        \def\range{2 * \sigmaTwo}
+
+        % --- Metoda I ---
+        \addplot [
+            domain=\medium - \range : \medium + \range,
+            samples=1000,
+            color=red,
+            thick,
+            smooth
+        ]
+        {1/(\sigmaOne*sqrt(2*pi)) * exp(-((x-\muOne)^2)/(2*\sigmaOne^2))};
+        \addlegendentry{Metoda I}
+
+        % --- Metoda II ---
+        \addplot [
+            domain=\medium - \range : \medium + \range,
+            samples=1000,
+            color=blue,
+            thick,
+            smooth
+        ]
+        {1/(\sigmaTwo*sqrt(2*pi)) * exp(-((x-\muTwo)^2)/(2*\sigmaTwo^2))};
+        \addlegendentry{Metoda II}
+
+        % --- Punkty --- %
+        \pgfmathsetmacro{\peakOne}{1/(\sigmaOne*sqrt(2*pi))}
+        \draw [dashed, black!70] (axis cs:\muOne, 0) -- (axis cs:\muOne, \peakOne);
+        \addplot[mark=*, mark size=1.5pt, red] coordinates {(\muOne, \peakOne)};
+        \addplot[mark=*, mark size=1.5pt, red] coordinates {(\muOne, 0)};
+        
+        \pgfmathsetmacro{\peakTwo}{1/(\sigmaTwo*sqrt(2*pi))}
+        \draw [dashed, black!70] (axis cs:\muTwo, 0) -- (axis cs:\muTwo, \peakTwo);
+        \addplot[mark=*, mark size=1.5pt, blue] coordinates {(\muTwo, \peakTwo)};
+        \addplot[mark=*, mark size=1.5pt, blue] coordinates {(\muTwo, 0)};
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Porównanie gęstości prawdopodobieństwa uzyskanych momentów bezwładności dla obu metod wraz z zaznaczonymi wartościami oczekiwanymi (szeroka domena).}
+    \label{img:gestosc_prawdop_porownanie_szeroko}
+\end{figure}

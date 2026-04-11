@@ -1,0 +1,491 @@
+\documentclass[twocolumn, a4paper, polish, 10pt]{article}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{secdot}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{sectsty}%pozwala na zmianê typu czcionki paragrafu
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\definecolor{fiolet}{cmyk}{0.47,1,0.07,0.33}
+\usepackage[a4paper, hmargin=2cm, tmargin=1.5cm, bmargin=3cm, footskip=2cm]{geometry}
+\usepackage{fancyhdr}
+
+% Additional imports
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{csquotes}
+
+\setlength {\marginparwidth }{2cm}
+\pgfplotsset{compat=1.18}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\DeclareMathOperator{\EX}{\mathbb{E}}
+
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\cfoot{}
+\rfoot{\emph{Paweł~Konopka}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\cfoot{\thepage{}}
+%\lfoot{\footnotesize{\textit{pawel.konopka@student.uj.edu.pl}}}
+
+\begin{document}
+
+\sectionfont{\centering\large}%kolor czcionki oraz centrowanie tytułu paragrafu
+\twocolumn[
+\begin{@twocolumnfalse}
+\begin{center}
+\textbf{\large{Zadanie zaliczeniowe z kursu SMOP I}}
+\bigskip
+\\Paweł~Konopka\footnotemark \\\textit{Statystyczne metody opracowania pomiarów I}\\
+\small{data rozpoczęcia ćwiczenia: 23 grudnia 2025}\\
+\end{center}
+
+%Abstrakt
+\begin{quote}\small{
+\begin{quote}
+\begin{center}
+\textbf{Streszczenie}
+\end{center}
+To sprawozdanie jest zadaniem zaliczeniowym kursu \textit{Statystyczne metody opracowania pomiarów I}, bazującym na ćwiczeniu \textbf{M8} z \textit{I pracowni fizycznej} \cite{pracownia_fizyczna_m8}. W ramach zadania otrzymałem \textbf{Zestaw~danych~33}.
+\end{quote}
+}
+\end{quote}
+ \bigskip
+    \bigskip
+\end{@twocolumnfalse}
+]
+\footnotetext{pawel.konopka@student.uj.edu.pl}
+
+\section{Wstęp teoretyczny}
+\subsection{Metoda I}
+Pierwszą z metod obliczenia momentu bezwładności tarczy jest pomiar jego masy $M_{\mathrm{w}}$ oraz promienia $R_{\mathrm{w}}$ podstawy, a następnie skorzystanie ze wzoru na moment bezwładności walca \cite{eFizyka_bryla_sztywna}:
+\begin{equation}
+    J_{\mathrm{w}} = \frac{1}{2} M_{\mathrm{w}} R_{\mathrm{w}}^2
+\label{eq:moment_bezwl_walca_promien}
+\end{equation}
+
+W przypadku pomiaru średnicy podstawy walca $D_{\mathrm{w}}$ zamiast średnicy ($R_{\mathrm{w}} = \frac{1}{2} D_{\mathrm{w}}$), wzór~(\ref{eq:moment_bezwl_walca_promien}) przyjmuje postać:
+\begin{equation}
+    J_{\mathrm{w}} = \frac{1}{2} M_{\mathrm{w}} (\frac{1}{2} D_{\mathrm{w}})^2 = \frac{1}{8} M_{\mathrm{w}} D_{\mathrm{w}} ^2
+\label{eq:moment_bezwl_walca_srednica}
+\end{equation}
+
+\subsection{Metoda II}
+Drugą z metod obliczenia momentu bezwładności krążka jest skorzystanie z następującej zależności dla żyroskopu \cite{pracownia_fizyczna_m8}:
+\begin{equation}
+    mgr = \frac{ J 4 \pi^2 }{T T_{\mathrm{p}}}
+\label{eq:zyroskop}
+\end{equation}
+
+gdzie:
+\begin{itemize}[nosep]
+  \item $m$ - dodatkowe obciążenie żyroskopu
+  \item $g$ - przyspieszenie ziemskie
+  \item $r$ - ramię działania dodatkowego obciążenia
+  \item $J$ - szukany moment bezwładności bryły
+  \item $T$ - okres obrotu tarczy
+  \item $T_{\mathrm{p}}$ - okres precesji żyroskopu
+\end{itemize}
+
+Przekształcając równanie~(\ref{eq:zyroskop}) otrzymujemy zależność na moment bezwładności krążka metodą II ($J_{\mathrm{II}}$):
+\begin{equation}
+    J_{\mathrm{II}} = \frac{g}{4 \pi^2} r m T T_{\mathrm{p}}
+\label{eq:moment_bezwladnosci_zyroskop}
+\end{equation}
+
+W celu uzyskania wartości $J_{\mathrm{II}}$ dokonany zostanie pomiar ramienia działania obciążenia $r$ oraz iloczynu $m T T_{\mathrm{p}}$.
+
+Aby uzyskać wartość iloczynu $m T T_{\mathrm{p}}$, dla 9 różnych mas $m$ zostaną wykonane pomiary okresów $T$ oraz $T_{\mathrm{p}}$, w celu poznania wartości wyrażenia $\frac{1}{T T_{\mathrm{p}}}$ dla danej masy. Następnie metodą regresji liniowej uzyskane zostanie dopasowanie prostej:
+\begin{equation}
+    \frac{1}{T T_{\mathrm{p}}} = a m + b
+\label{eq:regression_1}
+\end{equation}
+
+Wyraz wolny $b$ powinien mieć zaniedbywalną wartość. W takim przypadku równanie~(\ref{eq:regression_1}) uprości się do:
+\begin{displaymath}
+    \frac{1}{T T_{\mathrm{p}}} = a m
+\end{displaymath}
+
+co po przekształceniu daje następującą wartość współczynnika kierunkowego prostej $a$:
+\begin{equation}
+    a = \frac{1}{m T T_{\mathrm{p}}}
+\label{eq:regression_2}
+\end{equation}
+
+Łącząc równości~(\ref{eq:moment_bezwladnosci_zyroskop}) i~(\ref{eq:regression_2}) otrzymujemy następującą zależność momentu bezwładności $J_{\mathrm{II}}$ od ramienia obciążenia $r$ oraz współczynnika kierunkowego prostej $a$:
+\begin{equation}
+    J_{\mathrm{II}}(r, a) = \frac{g}{4 \pi^2} \frac{r}{a}
+\label{eq:moment_bezwladnosci_2}
+\end{equation}
+
+\section{Opracowanie danych}
+\subsection{Metoda I}
+\subsubsection{Średnica tarczy}
+W celu obliczenia momentu bezwładności tarczy $J_{\mathrm{I}}$ pierwszą metodą, wykonane zostały pomiary średnicy tarczy $D$. Wyniki znajdują się w tabeli~(\ref{tab:srednica_tarczy}).
+
+\input{table/srednica_tarczy}
+
+Na podstawie wyników z tabeli jesteśmy w stanie obliczyć wartość średnią:
+\begin{displaymath}
+    \bar{D} = 0.2544 \, \mathrm{m}
+\end{displaymath}
+
+oraz odchylenie standardowe średniej:
+\begin{displaymath}
+    S_{\bar{D}} \approx 2.821 \cdot 10^{-3} \, \mathrm{m}
+\end{displaymath}
+
+po uwzględnieniu współczynnika Studenta dla 5 pomiarów oraz współczynnika ufności $\alpha=0.6828$ \cite{smop_wyklad}:
+\begin{displaymath}
+    t_{\alpha, 5} = 1.141
+\end{displaymath}
+
+otrzymujemy niepewność standardową typu~A:
+\begin{equation}
+    u_{\mathrm{A}}(D) = t_{\alpha, 5} \cdot S_{\bar{D}} \approx 3.219 \cdot 10^{-3} \, \mathrm{m}
+\label{eq:D_niepewnosc_A}
+\end{equation}
+
+Dokładność przyrządu (niepewność graniczna typu~B) dla pomiaru $D$ jest znana i stała, a jej wartość wynosi:
+\begin{displaymath}
+    \Delta D = 1 \, \mathrm{mm} = 10^{-3} \, \mathrm{m}
+\end{displaymath}
+
+na tej podstawie jesteśmy w stanie obliczyć niepewność standardową typu~B:
+\begin{equation}
+    u_{\mathrm{B}}(D) = \frac{\Delta D}{\sqrt{3}} \approx 5.774 \cdot 10^{-4} \, \mathrm{m}
+\label{eq:D_niepewnosc_B}
+\end{equation}
+
+Na podstawie równości~(\ref{eq:D_niepewnosc_A}) oraz~(\ref{eq:D_niepewnosc_B}) jesteśmy w stanie obliczyć całkowitą niepewność standardową $D$:
+\begin{displaymath}
+    u(D) = \sqrt{ u_{\mathrm{A}}^2(D) + u_{\mathrm{B}}^2(D) } \approx 3.271 \cdot 10^{-3} \, \mathrm{m}
+\end{displaymath}
+
+Całkowit niepewność standardowa $u(D)$ jest bardzo bliska wartości niepewności standardowej typu~A $u_{\mathrm{A}}(D)$. Oznacza to, że niepewność standardowa typu~B $u_{\mathrm{B}}(D)$ ma jedynie nieznaczny wpływ na niepewność całkowitą.
+
+Ostatecznie długość średnicy tarczy ma wartość:
+\begin{displaymath}
+    D = 0.2544(33) \, \mathrm{m}
+\end{displaymath}
+
+\subsubsection{Moment bezwładności tarczy}
+Wiemy, że masa tarczy $M_{\mathrm{t}}$ ma następującą dokładną wartość:
+\begin{displaymath}
+    M_{\mathrm{t}} = 1.185 \, \mathrm{kg}
+\end{displaymath}
+
+Wykorzystując wzór~(\ref{eq:moment_bezwl_walca_srednica}), obliczoną wartość średnią średnicy tarczy $\bar{D}$ oraz wartość dokładną masy tarczy $M_{\mathrm{t}}$, jesteśmy w stanie obliczyć wartość oczekiwaną momentu bezwładności tarczy $J_{\mathrm{I}}$:
+\begin{displaymath}
+    J_{\mathrm{I}} = \frac{1}{8} M_{\mathrm{t}} D^2
+\end{displaymath}
+\begin{displaymath}
+    \EX(J_{\mathrm{I}}) = \frac{1}{8} M_{\mathrm{t}} \bar{D}^2 \approx 9.587 \cdot  10^{-3} \, \mathrm{kg \, m^2}
+\end{displaymath}
+
+W celu obliczenia niepewności momentu bezwładności $u(J_{\mathrm{I}})$, korzystamy z metody propagacji niepewności:
+\begin{equation}
+    u(J_{\mathrm{I}}) = \sqrt{ [ \pdv{J_{\mathrm{I}}}{M_{\mathrm{t}}} u(M_{\mathrm{t}}) ]^2 + [ \pdv{J_{\mathrm{I}}}{D} u(D) ]^2 } \\
+\label{eq:J1_niepewnosc_1}
+\end{equation}
+
+Z racji na fakt, że $M_{\mathrm{t}}$ jest wartością dokładną (a więc $u(M_{\mathrm{t}}) = 0$), wzór~(\ref{eq:J1_niepewnosc_1}) upraszcza się do postaci:
+\begin{equation}
+    u(J_{\mathrm{I}}) = \sqrt{ [ \pdv{J_{\mathrm{I}}}{D} u(D) ]^2 } = |\pdv{J_{\mathrm{I}}}{D} u(D)| \\
+\label{eq:J1_niepewnosc_2}
+\end{equation}
+
+Pochodna cząstkowa $\pdv{J_{\mathrm{I}}}{D}$ ma postać:
+\begin{equation}
+    \pdv{J_{\mathrm{I}}}{D} = \frac{1}{8} M_{\mathrm{t}} \dv{D^2}{D} = \frac{1}{4} M_{\mathrm{t}} D \\
+\label{eq:pochodna_dJ_dD}
+\end{equation}
+
+Łącząc równości~(\ref{eq:J1_niepewnosc_2}) i~(\ref{eq:pochodna_dJ_dD}) oraz podstawiając $D=\bar{D}$ otrzymujemy:
+\begin{displaymath}
+    u(J_{\mathrm{I}}) = \frac{1}{4} M_{\mathrm{t}} \bar{D}~u(D) \approx 2.465 \cdot 10^{-4}~\mathrm{kg~m^2} \\
+\end{displaymath}
+
+Ostatecznie możemy podać obliczoną wartość momentu bezwładności krążka $J_{\mathrm{I}}$ wraz z niepewnością pomiarową:
+\begin{displaymath}
+    J_{\mathrm{I}} = 9.59(25) \cdot 10^{-3}~\mathrm{kg~m^2} \\
+\end{displaymath}
+
+\subsection{Metoda II}
+\subsubsection{Ramię działania obciążenia}
+W celu obliczenia momentu bezwładności tarczy $J_{\mathrm{II}}$ drugą metodą, wykonane zostały pomiary ramienia działania obciążenia $R$. Wyniki znajdują się w tabeli~(\ref{tab:ramie_obciazenia}), a ich analiza przebiegnie identycznie jak w przypadku średnicy krążka $D$ z metody~I.
+
+\input{table/ramie_obciazenia}
+
+Wartość średnia:
+\begin{displaymath}
+    \bar{R} = 0.2672 \, \mathrm{m}
+\end{displaymath}
+
+oraz odchylenie standardowe średniej:
+\begin{displaymath}
+    S_{\bar{R}} \approx 1.241 \cdot 10^{-3} \, \mathrm{m}
+\end{displaymath}
+
+niepewność standardową typu~A po uwzględnieniu współczynnika Studenta:
+\begin{equation}
+    u_{\mathrm{A}}(R) = t_{\alpha, 5} \cdot S_{\bar{R}} \approx 1.416 \cdot 10^{-3} \, \mathrm{m}
+\label{eq:R_niepewnosc_A}
+\end{equation}
+
+Dokładność przyrządu (niepewność graniczna typu~B) dla pomiarów $R$ jest identyczna jak w przypadku pomiaru $D$, a więc także niepewność standardowa typu~B będzie miała identyczną wartość:
+\begin{equation}
+    u_{\mathrm{B}}(R) = u_{\mathrm{B}}(D) \approx 5.774 \cdot 10^{-4} \, \mathrm{m}
+\label{eq:R_niepewnosc_B}
+\end{equation}
+
+Na podstawie równości~(\ref{eq:R_niepewnosc_A}) oraz~(\ref{eq:R_niepewnosc_B}) jesteśmy w stanie obliczyć całkowitą niepewność standardową $R$:
+\begin{displaymath}
+    u(R) = \sqrt{ u_{\mathrm{A}}^2(R) + u_{\mathrm{B}}^2(R) } \approx 1.529 \cdot 10^{-3} \, \mathrm{m} \\
+\end{displaymath}
+
+W przypadku pomiarów $R$ niepewność typu~A jest także znacznie większa, niż typu~B, jednak różnica nie jest aż tak wielka jak w wypadku pomiarów $D$. Niepewność typu~B $u_{\mathrm{B}}(D)$ zmienia w sposób istotny niepewność całkowitą.
+
+Ostatecznie długość ramienia działania obciążenia ma wartość:
+\begin{displaymath}
+    R = 0.2672(16) \, \mathrm{m} \\
+\end{displaymath}
+
+\subsubsection{Pomiary okresów dla danych mas}
+
+Dla każdej z 9 różnych mas($m_1, m_2, \dots, m_9$) wykonano po 10 pomiarów trzech odcinków czasu: $T_1, T_2, T_3$. Z tych odcinków można obliczyć okres obrotu $T$:
+\begin{displaymath}
+    T = \frac{T_1 + T_2}{2} \\
+\end{displaymath}
+
+oraz okres precesji $T_{\mathrm{p}}$:
+\begin{displaymath}
+    T_{\mathrm{p}} = 2 T_3 \\
+\end{displaymath}
+
+Przykładowe pomiary odcinków czasu (dla $m_1 = 10 \, \mathrm{g}$) wraz obliczoną odpowiadającą wartością $p = \frac{1}{T T_{\mathrm{p}}}$ znajdują się w tabeli (\ref{tab:pomiary_czas_10g}).
+
+\input{table/pomiary_czas_10g}
+
+Następnie dla każdego $m_i$ liczymy wartość średnią wyrażenia $p = \frac{1}{T T_{\mathrm{p}}}$ oraz odchylenie standardowe średniej $S_p$.
+
+Uwzględniamy także współczynnik Studenta dla 10 pomiarów oraz współczynnika ufności $\alpha=0.6828$ \cite{smop_wyklad}:
+\begin{displaymath}
+    t_{\alpha, 10} = 1.059
+\end{displaymath}
+
+Co daje postać niepewności standardowej typu~A:
+\begin{displaymath}
+    u_{\mathrm{A}}(p) = t_{\alpha, 10} \cdot S_{\bar{p}}
+\end{displaymath}
+
+Obliczone wartości wyrażenia $p = \frac{1}{T T_{\mathrm{p}}}$ wraz z odchyleniem standardowym $S_p$ oraz niepewnością standardową typu~A $u_{\mathrm{A}}(p)$ dla każdego $m_i$ znajdują się w tabeli (\ref{tab:regresja_dane}).
+
+\input{table/regresja_dane}
+
+Dokładność przyrządu (niepewność graniczna typu~B) dla pomiaru $T_1$ i $T_2$ jest znana i stała, a jej wartość wynosi:
+\begin{displaymath}
+    \Delta T_1 = \Delta T_2 = 10^{-4} \, \mathrm{s}
+\end{displaymath}
+\begin{displaymath}
+    \Delta T_3 = 10^{-2} \, \mathrm{s}
+\end{displaymath}
+
+Jak widać w tabeli (\ref{tab:regresja_dane}) obliczone niepewności standardowe typu~A $u_{\mathrm{A}}(p)$ są rzędu $10 \%$ wartości. Dla porównania niepewności graniczne typu~B są rzędu $10^{-4} - 10^{-3}$ ($T_1$ i $T_2$) oraz ok. $10^{-3}$ dla $T_3$. Ze względu na tak dużą dysproporcję, niepewności pomiarowe typu~B mogą zostać pominięte w obliczeniach, a więc:
+\begin{displaymath}
+    u(p) = u_{\mathrm{A}}(p)
+\end{displaymath}
+
+\subsubsection{Regresja liniowa}
+Dane z tabeli (\ref{tab:regresja_dane}) przedstawione są na wykresie (Rysunek \ref{img:regresja_wykres}). Następnie wykonana została regresja liniowa przy pomocy programu \textit{OriginLab} \footnote{\url{https://www.originlab.com/}}. Użyta została regresja ważona w wariancie \textit{Instrumental}, gdzie waga danego punktu pomiarowego jest dana jako \cite{origin_fitting_weighting}:
+\begin{displaymath}
+    w_i = \frac{1}{\sigma_i^2}
+\end{displaymath}
+
+gdzie $\sigma_i$ jest wartością $u_{\mathrm{A}}(p)$ z tabeli (\ref{tab:regresja_dane}) dla danego punktu.
+
+\input{plot/regresja_wykres}
+
+W wyniku regresji otrzymane zostały następujące wartości parametrów prostej:
+\begin{displaymath}
+\begin{split}
+    a &= (7.95279 \pm 0.62226) \, \mathrm{kg^{-1} \, s^{-2}} \\
+    &\approx 7.95(63) \, \mathrm{kg^{-1} \, s^{-2}}
+\end{split}
+\end{displaymath}
+\begin{displaymath}
+    b = (1.695 \pm 2.391) \cdot 10^{-2} \, \mathrm{s^{-2}}
+\end{displaymath}
+
+Krzywa, wraz z danymi pomiarowymi znajduje się na wykresie (Rysunek \ref{img:regresja_wykres}).
+
+Miara jakości dopasowania \textit{Adjusted R-Square} \cite{origin_adj_r_square} ma następującą wartość, co uznawane jest za \enquote{dobre} dopasowanie:
+\begin{displaymath}
+    R^2_{\mathrm{adj}} = 0.95304
+\end{displaymath}
+
+Zgodnie z oczekiwaniami, zerowa wartość wyrazu wolnego $b$ mieści się w granicach błędu statystycznego dopasowania, a więc zostanie on pominięty w dalszych rozważaniach (uproszczenie zależności (\ref{eq:regression_1}) do (\ref{eq:regression_2})).
+
+Błąd standardowy współczynnika kierunkowego $a$ jest rzędu $10\%$ wartości, a więc ponownie błąd standardowy typu~B zostanie pominięty w dalszych rozważaniach, a wartość błędu $S_a$ uzyskana z regresji będzie pełniła rolę całkowitej niepewności standardowej $u(a)$:
+\begin{displaymath}
+    u(A) = S_a = 0.62226 \, \mathrm{kg^{-1} \, s^{-2}}
+\end{displaymath}
+
+\subsubsection{Moment bezwładności tarczy}
+Korzystając ze wzoru (\ref{eq:moment_bezwladnosci_2}), obliczonej długości ramienia $R$ oraz współczynnika kierunkowego $a$ otrzymujemy wzór na moment bezwładności tarczy metodą drugą $J_{\mathrm{II}}$:
+\begin{equation}
+    J_{\mathrm{II}} = J_{\mathrm{II}}(R, a) = \frac{g R}{4 \pi^2 a}
+\label{eq:J2_wzor}
+\end{equation}
+
+Przyspieszenie ziemskie na terenie Krakowa ma wartość \cite{przyspieszenie_ziemskie_krakow}:
+\begin{displaymath}
+    g_{\mathrm{K}} = 9.8100(5) \, \mathrm{\frac{m}{s^2}}
+\end{displaymath}
+
+W celu obliczenia wartości oczekiwanej $\EX(J_{\mathrm{II}})$, podstawiamy do wyrażenia (\ref{eq:J2_wzor}) średnią długość ramienia $\bar{R}$, wartość oczekiwaną współczynnika kierunkowego $\EX(a)$ oraz wartość oczekiwaną przyspieszenia ziemskiego $\EX(g_{\mathrm{K}})$
+\begin{displaymath}
+\begin{split}
+    \EX(J_{\mathrm{II}})
+    &= \frac{\EX(g_{\mathrm{K}}) \bar{R}}{4 \pi^2 \EX(a)} \\
+    &= \frac{9.8100 \, \mathrm{m \, s^{-2}} \cdot 0.2672 \, m}
+    {4 \pi^2 \cdot 7.95279 \, \mathrm{kg^{-1} \, s^{-2}}} \\
+    &\approx 8.34884 \cdot 10^{-3} \, \mathrm{kg \, m^2}
+\end{split}
+\end{displaymath}
+
+W celu obliczenia niepewności momentu bezwładności $u(J_{\mathrm{II}})$, korzystamy z metody propagacji niepewności:
+\begin{displaymath}
+\begin{split}
+    u(J_{\mathrm{II}}) &= \\
+    =& \sqrt{
+        [ \pdv{J_{\mathrm{II}}}{g} u(g) ]^2
+        + [ \pdv{J_{\mathrm{II}}}{R} u(R) ]^2
+        + [ \pdv{J_{\mathrm{II}}}{a} u(a) ]^2
+    }
+\end{split}
+\end{displaymath}
+
+Poszczególne pochodne cząstkowe mają postać:
+\begin{displaymath}
+    \pdv{J_{\mathrm{II}}}{g} = \frac{R}{4 \pi^2 a}
+\end{displaymath}
+
+\begin{displaymath}
+    \pdv{J_{\mathrm{II}}}{R} = \frac{g}{4 \pi^2 a}
+\end{displaymath}
+
+\begin{displaymath}
+    \pdv{J_{\mathrm{II}}}{a} = -\frac{g R}{4 \pi^2 a^2}
+\end{displaymath}
+
+a więc finalnie wzór na niepewność momentu bezwładności $u(J_{\mathrm{II}})$ będzie miał podstać:
+\begin{equation}
+\begin{split}
+    u(J_{\mathrm{II}}) &= \\
+    =& \sqrt{
+        ( \frac{g R}{4 \pi^2 a} )^2 [
+            ( \frac{u(g)}{g} )^2
+            + ( \frac{u(R)}{R} )^2
+            + ( \frac{u(a)}{a} )^2
+        ]
+    } \\
+    =& \frac{g R}{4 \pi^2 a} \sqrt{
+        ( \frac{u(g)}{g} )^2
+        + ( \frac{u(R)}{R} )^2
+        + ( \frac{u(a)}{a} )^2
+    }
+\end{split}
+\end{equation}
+
+Poszczególne składniki sumy pod pierwiastkiem mają w przybliżeniu wartości:
+\begin{displaymath}
+    ( \frac{u(g)}{g} )^2 \approx 2.6 \cdot 10^{-9}
+\end{displaymath}
+
+\begin{displaymath}
+    ( \frac{u(R)}{R} )^2 \approx 3.28 \cdot 10^{-5}
+\end{displaymath}
+
+\begin{displaymath}
+    ( \frac{u(a)}{a} )^2 \approx 6.12 \cdot 10^{-3}
+\end{displaymath}
+
+Widzimy więc, że to niepewność współczynnika kierunkowego prostej $u(a)$ odgrywa zdecydowanie decydującą rolę przy liczeniu niepewności momentu bezwładności $u(J_{\mathrm{II}})$.
+
+Finalnie, podstawiając wszystkie obliczone wartości uzyskujemy:
+\begin{displaymath}
+    u(J_{\mathrm{II}}) \approx 4.115 \cdot 10^{-3} \, \mathrm{kg \, m^2}
+\end{displaymath}
+
+Co daje następującą wartość $J_{\mathrm{II}}$ wraz z niepewnością:
+\begin{displaymath}
+    J_{\mathrm{II}} = (8.3 \pm 4.2) \cdot 10^{-3} \, \mathrm{kg \, m^2}
+\end{displaymath}
+
+\section{Podsumowanie}
+W wyniku obliczeń obie metody dały następujące wyniki:
+\begin{displaymath}
+    J_{\mathrm{I}} = 9.59(25) \cdot 10^{-3}~\mathrm{kg~m^2} \\
+\end{displaymath}
+
+\begin{displaymath}
+    J_{\mathrm{II}} = (8.3 \pm 4.2) \cdot 10^{-3} \, \mathrm{kg \, m^2}
+\end{displaymath}
+
+Funkcje gęstości prawdopodobieństwa dla rozkładów wartości momentów bezwładności dla obu metod znajdują się na wykresach (Rysunek \ref{img:gestosc_prawdop_porownanie_szeroko}) - szeroka domena, oraz (Rysunek \ref{img:gestosc_prawdop_porownanie_wasko}) - wąska domena. Zaznaczone zostały również wartości oczekiwane $\EX(J_{\mathrm{I}})$ oraz $\EX(J_{\mathrm{II}})$.
+
+\input{plot/gestosc_prawdop_porownanie_szeroko}
+
+\input{plot/gestosc_prawdop_porownanie_wasko}
+
+Na szczególną uwagę zasługuje ogromna niepewność wyniku w metodzie II. Błąd względny wynosi:
+\begin{displaymath}
+    \frac{ u(J_{\mathrm{II}}) }{ \EX(J_{\mathrm{II}}) } = 49.3\%
+\end{displaymath}
+
+Przez co wartość maksymalna przedziału ufności dla $\alpha = 68.28\%$ jest niemalże trzykrotnością wartości minimalnej:
+\begin{displaymath}
+    \frac{ \EX(J_{\mathrm{II}}) + u(J_{\mathrm{II}}) }{ \EX(J_{\mathrm{II}}) - u(J_{\mathrm{II}}) }
+    \approx 2.94
+\end{displaymath}
+
+Dla porównania w metodzie I ograniczona niepewność daje znacznie większe pole do analizy obliczonej wartości:
+\begin{displaymath}
+    \frac{ u(J_{\mathrm{I}}) }{ \EX(J_{\mathrm{I}}) } = 2.57\%
+\end{displaymath}
+
+\begin{displaymath}
+    \frac{ \EX(J_{\mathrm{I}}) + u(J_{\mathrm{I}}) }{ \EX(J_{\mathrm{I}}) - u(J_{\mathrm{I}}) }
+    \approx 1.05
+\end{displaymath}
+
+\begin{thebibliography}{7}
+\bibitem{pracownia_fizyczna_m8} I~Pracownia Fizyczna, \emph{Badanie ruchu precesyjnego żyroskopu (M8)}, Instytut Fizyki~UJ (\url{https://1pf.if.uj.edu.pl/materialy-do-cwiczen/spis-cwiczen}).
+\bibitem{eFizyka_bryla_sztywna} prof.~dr~hab.~inż. \mbox{Zbigniew} \mbox{Kąkol}, \mbox{dr~Jan} \mbox{Żukrowski}, \emph{e-Fizyka}, rozdział \textbf{11.3} \emph{Dynamika bryły sztywnej} (\url{https://home.agh.edu.pl/~kakol/efizyka/w11/main11c.html}).
+\bibitem{smop_wyklad} dr~hab. \mbox{Katarzyna} \mbox{Gajos}, Wykład \emph{Statystyczne Metody Opracowania Pomiarów I Dla studentów fizyki}.
+\bibitem{origin_fitting_weighting} \emph{Origin Help}, rozdział \textbf{15.3.6.5} \emph{Fitting with Errors and Weighting}, OriginLab Corporation (\url{https://www.originlab.com/doc/Origin-Help/FIt-with-Err-Weight}).
+\bibitem{origin_adj_r_square} \emph{Origin Help}, rozdział \textbf{15.4} \emph{Interpreting Regression Results}, sekcja \textbf{2.5} \emph{Adj. R-Square}, OriginLab Corporation (\url{https://www.originlab.com/doc/Origin-Help/Interpret-Regression-Result#Adj._R-Square}).
+\bibitem{przyspieszenie_ziemskie_krakow} \emph{Dziennik normalizacji i miar nr 13/81 r.}, Polski Komitet Normalizacji, Miar i Jakości (\url{https://www.gum.gov.pl/download/2/1854/dzienniknormalizacjiimiar198113.pdf}).
+
+\end{thebibliography}
+
+\end{document}
